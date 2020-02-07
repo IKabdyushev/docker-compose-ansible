@@ -16,7 +16,7 @@
 - name: "Setting git_repo_version to {{ local_commit_hash }}"
   set_fact:
     git_repo_version: "{{ local_commit_hash.stdout }}"
-  when: local_commit_hash|succeeded and code_source == 'git' and get_local_commit
+  when: local_commit_hash is succeeded and code_source == 'git' and get_local_commit
 - name: "Checkout Git repository {{ git_repo }} -- {{ git_repo_version }}"
   git:
     accept_hostkey: yes
